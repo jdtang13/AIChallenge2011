@@ -1,0 +1,1 @@
+python tools/playgame.py "python MyBot.py" "python C:\Users\Amy\Documents\aichallenge\tools\sample_bots\python\GreedyBot.py" --map_file C:\Users\Amy\Documents\aichallenge\tools\maps\cell_maze\cell_maze_p02_07.map --log_dir game_logs --turns 300 --player_seed 7 --verbose -e

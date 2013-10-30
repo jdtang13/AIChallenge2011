@@ -1,0 +1,1 @@
+python tools/playgame.py "python MyBot.py" "python C:\Users\Amy\Documents\aichallenge\tools\submission_test\TestBot.py" --map_file C:\Users\Amy\Documents\aichallenge\tools\submission_test\test.map --log_dir game_logs --strict --turns 30 --food none --log_error -e

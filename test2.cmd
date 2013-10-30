@@ -1,0 +1,1 @@
+python tools/playgame.py "python MyBot.py" "python myBot.py" --map_file tools/maps/example/tutorial1.map --log_dir game_logs --turns 100 --player_seed 7 --log_error -e
