@@ -85,20 +85,6 @@ class MyBot:
                 self.i[ant_loc] = 0
         
         def do_move_direction(loc, direction):
-
-##            hill_loc_cm_r = 0.0
-##            hill_loc_cm_c = 0.0
-##            num_hils = 0
-##            for hill_loc_tmp in ants.my_hills():
-##                hill_row_tmp, hill_col_tmp = hill_loc_tmp
-##                hill_loc_cm_r += hill_row_tmp
-##                hill_loc_cm_c += hill_col_tmp
-##                num_hils += 1
-##
-##            hill_loc_cm_r = hill_loc_cm_r / num_hils
-##            hill_loc_cm_c = hill_loc_cm_c / num_hils
-            
-##            getLogger().debug("Trying to move in %s",direction)
             
             if loc not in self.stepped_on:
                 self.stepped_on.append(loc)
@@ -143,9 +129,6 @@ class MyBot:
                     if self.i[ant_loc] > 0:
                         new_rib = float(((self.i[ant_loc])*rib + 10*row)/(self.i[ant_loc] + 10))
                         new_cib = float(((self.i[ant_loc])*cib + 10*col)/(self.i[ant_loc] + 10)) #update the ci's and ri's
-
-##                        new_rib = float((rib + 0.5*row)/(1 + 0.5))
-##                        new_cib = float((cib + 0.5*col)/(1 + 0.5)) #update the ci's and ri's
                         
                     else:
                         new_rib = row
@@ -161,25 +144,10 @@ class MyBot:
                     if di >= di_1 - 0.1: # if this is true, go this way!
                         tempdir = d #TODO: double check all this
                         break
-                
-##                        new_loc_tmp = ants.destination(loc, tempdir)    # don't go if you run into water later         
-##                        if ants.passable(ants.destination(new_loc_tmp, tempdir)):
-##                            break
-                    
-                    
-##                    else:
-##                        if (row_1 == row) or (col_1 == col):       
-##                            tempdir = d #TODO: double check all this
-##                            break
+
                     else:
                         tempdir = ants.randlist(dlist)
                     
-##                        new_loc_tmp = ants.destination(loc, tempdir)             
-##                        if ants.passable(ants.destination(new_loc_tmp, tempdir)):
-##                            break
-
-##                getLogger().debug("self.i %d, row_1 %, row %d, rib %d, cib %d, di %d, di_1 %d", self.i[ant_loc], row_1, row, rib, cib, di, di_1)    
-
             self.directions.append(tempdir)
             new_loc = ants.destination(loc, tempdir)
 
@@ -227,10 +195,6 @@ class MyBot:
             possibles.append((row-2,col))
             possibles.append((row,col+2))
             possibles.append((row,col-2))
-##            possibles.append((row+1,col+1))
-##            possibles.append((row-1,col+1))
-##            possibles.append((row+1,col-1))
-##            possibles.append((row-1,col-1))
 
             ri = random.randint(0,3)
 
@@ -285,66 +249,6 @@ class MyBot:
         for dist, ant_loc, hill_loc in ant_dist:
             self.intent[ant_loc] = Intent.CONQUER
             do_move_location(ant_loc, hill_loc)
-
-        #aggro!!!
-        #do offensive stuff only if you have good numbers
-##        attackers = 0
-##        for intent in self.intent:
-##            if intent == Intent.KILL:
-##                attackers += 1
-##                
-##        count = 0
-##        enemy_loc = ants.closest_enemy_ant(ant_loc, None)
-##        if enemy_loc != None:
-##            for ant_loc in ants.my_ants(): #ants closest to my enemies go
-##                if ant_loc not in orders.values():
-##                    count += 1
-##
-##                if enemy_loc == None:
-##                    continue
-##                else:
-##                    self.intent[ant_loc] = Intent.KILL
-##                    
-##                    if count == 1:
-##                        do_move_location(ant_loc, enemy_loc)
-##                    else:
-##                        move_around(ant_loc, enemy_loc)
-##                    
-##                if count >= 10:
-##                    break
-
-        #do defensive stuff only if you have good numbers
-##        defenders = 0
-##        for intent in self.intent:
-##            if intent == Intent.DEFEND:
-##                defenders += 1
-##                
-##        if len(ants.my_ants()) > 3:
-##
-##            if defenders < 4*len(ants.my_hills()):
-##                
-##                ant_dist = []
-##
-##                for hill_loc in ants.my_hills():
-##                    for ant_loc in ants.my_ants():
-##                        if ant_loc not in orders.values():
-##                            dist = ants.distance(ant_loc, hill_loc)
-##                            ant_dist.append((dist, ant_loc, hill_loc))
-##
-##                ant_dist.sort()
-##
-##                count = 0
-##                for dist, ant_loc, hill_loc in ant_dist: #ants closest to my hills go
-##                    count += 1
-##                    
-##                    self.intent[ant_loc] = Intent.DEFEND
-##                    move_around(ant_loc, hill_loc)
-##                    
-##                    if count >= 4:
-##                        break
-        
-        # explore unseen areas
-        # TODO: FIX THIS. Have them continuously go in random directions and then turn around if they bump into something
 
         for loc in self.unseen[:]:
             if ants.visible(loc):

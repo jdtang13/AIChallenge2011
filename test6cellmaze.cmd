@@ -1,1 +1,0 @@
-python tools/playgame.py "python MyBot.py" "python MyBot.py" "python tools\sample_bots\python\GreedyBot.py" "python tools\sample_bots\python\GreedyBot.py" "python tools\sample_bots\python\HunterBot.py" "python tools\sample_bots\python\LeftyBot.py" --map_file tools\maps\cell_maze\cell_maze_p06_17.map --log_dir game_logs --turns 300 --player_seed 7 --verbose -e

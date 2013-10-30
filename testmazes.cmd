@@ -1,1 +1,0 @@
-python tools/playgame.py "python MyBot.py" "python MyBot_2.py" --map_file tools/maps/maze/maze_02p_01.map --log_dir game_logs  --food none --turns 100 --verbose
